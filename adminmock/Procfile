@@ -1,1 +1,1 @@
-web: gunicorn adminmock.adminmock.wsgi
+web: gunicorn adminmock.wsgi
