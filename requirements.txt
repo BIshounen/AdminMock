@@ -3,3 +3,4 @@ gunicorn
 django-heroku
 djangorestframework
 django-multiselectfield
+dj_database_url
