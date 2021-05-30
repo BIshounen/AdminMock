@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'adminmock.adminmock.urls'
+ROOT_URLCONF = 'adminmock.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'adminmock.adminmock.wsgi.application'
+WSGI_APPLICATION = 'adminmock.wsgi.application'
 
 
 # Database
