@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
-from .sereializers import EmployeeSerializer
+from .serializers import EmployeeSerializer
 from .models import Employee
 
 

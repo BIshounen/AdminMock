@@ -21,7 +21,7 @@ class ChoiceField(serializers.MultipleChoiceField):
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    employee_games = ChoiceField(choices=GAMES)
+    employee_games = serializers.CharField(source='get_employee_games_display')
     class Meta:
 
         model = Employee
