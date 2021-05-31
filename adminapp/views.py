@@ -10,6 +10,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = Employee.objects.all().order_by('-date_joined')
+    queryset = Employee.objects.all().order_by('-employee_name')
     serializer_class = EmployeeSerializer
     permission_classes = [permissions.IsAuthenticated]
