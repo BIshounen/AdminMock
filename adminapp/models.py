@@ -17,3 +17,6 @@ class Employee(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     employee_rank = models.IntegerField(default=0)
     employee_games = MultiSelectField(choices=GAMES, blank=True)
+
+    def __str__(self):
+        return self.name
