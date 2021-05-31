@@ -9,6 +9,7 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
 
         model = Game
+        fields = '__all__'
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
