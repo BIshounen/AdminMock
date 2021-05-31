@@ -3,7 +3,7 @@ from adminapp.models import Employee
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    employee_games = serializers.CharField(source='get_employee_games_display')
+
     class Meta:
 
         model = Employee
