@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import EmployeeSerializer, GameSerializer
+from .serializers import EmployeeSerializer, GameSerializerFull
 from .models import Employee, Game
-from rest_framework.decorators import action
-from rest_framework.response import Response
 
 
 # Create your views here.
@@ -24,5 +22,5 @@ class GameViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Game.objects.all().order_by('-game_name')
-    serializer_class = GameSerializer
+    serializer_class = GameSerializerFull
     permission_classes = [permissions.IsAuthenticated]

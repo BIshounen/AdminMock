@@ -12,6 +12,14 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
+class GameSerializerFull(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+
+        model = Game
+        fields = '__all__'
+
+
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     employee_games = GameSerializer(read_only=True, many=True)
 
@@ -28,7 +36,6 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
         instance.employee_name = validated_data.get('employee_name', instance.employee_name)
         instance.card_code = validated_data.get('card_code', instance.card_code)
         instance.is_active = validated_data.get('is_active', instance.is_active)
-        instance.created_date = validated_data.get('created_date', instance.created_date)
         instance.employee_rank = validated_data.get('employee_rank', instance.employee_rank)
         instance.employee_games = validated_data.get('employee_games', instance.employee_games)
         instance.save()
