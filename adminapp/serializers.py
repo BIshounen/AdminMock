@@ -7,4 +7,4 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
 
         model = Employee
-        fields = ['employee_name', 'employee_games']
+        fields = '__all__'

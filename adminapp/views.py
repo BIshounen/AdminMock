@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import permissions, generics
 from .serializers import EmployeeSerializer
 from .models import Employee
 
 
 # Create your views here.
-class EmployeeViewSet(viewsets.ModelViewSet):
+class EmployeeViewSet(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
