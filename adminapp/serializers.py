@@ -1,5 +1,5 @@
-from rest_framework import serializers, fields
-from adminapp.models import Employee, GAMES
+from rest_framework import serializers
+from adminapp.models import Employee
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
