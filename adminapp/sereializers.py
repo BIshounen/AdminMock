@@ -3,4 +3,5 @@ from adminapp.models import Employee, GAMES
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    myField1 = fields.MultipleChoiceField(choices=GAMES)
+    class Meta:
+        myField1 = fields.MultipleChoiceField(choices=GAMES)
