@@ -4,7 +4,7 @@ from adminapp.models import Employee, Game
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     def to_representation(self, value):
-        return value.name
+        return value.game_name
 
     class Meta:
 
