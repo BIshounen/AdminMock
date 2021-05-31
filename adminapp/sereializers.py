@@ -4,5 +4,6 @@ from adminapp.models import Employee, GAMES
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
+
         model = Employee
-        fields = ['employee_name']
+        fields = ['employee_name', 'employee_games']
