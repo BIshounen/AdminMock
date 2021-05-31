@@ -17,7 +17,7 @@ class Employee(models.Model):
     is_active = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     employee_rank = models.IntegerField(default=0)
-    employee_games = models.ForeignKey(Game, on_delete=models.DO_NOTHING, blank=True)
+    employee_games = models.ManyToManyField(Game, blank=True)
 
     def __str__(self):
         return self.employee_name
