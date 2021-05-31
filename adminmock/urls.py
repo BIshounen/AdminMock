@@ -15,14 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers, serializers, viewsets
-from adminapp.models import Employee
+from rest_framework import routers
 
 
-class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Employee
-        fields = ['employee_name', 'card_code', 'is_active', 'created_date', 'employee_rank', 'employee_games']
+router = routers.DefaultRouter()
+router.register(r'employees', views.UserViewSet)
 
 
 urlpatterns = [
