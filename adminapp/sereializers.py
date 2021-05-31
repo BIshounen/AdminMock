@@ -3,8 +3,8 @@ from adminapp.models import Employee, GAMES
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    my_field = fields.MultipleChoiceField(choices=GAMES)
+    employee_games = fields.MultipleChoiceField(choices=GAMES)
     class Meta:
 
         model = Employee
-        fields = ['employee_name']
+        fields = ['employee_name', 'employee_games']
