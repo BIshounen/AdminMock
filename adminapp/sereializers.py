@@ -2,7 +2,7 @@ from rest_framework import serializers, fields
 from adminapp.models import Employee, GAMES
 
 
-class ChoiceField(serializers.ChoiceField):
+class ChoiceField(serializers.MultipleChoiceField):
 
     def to_representation(self, obj):
         if obj == '' and self.allow_blank:
