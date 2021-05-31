@@ -21,6 +21,7 @@ import adminapp.views as views
 
 router = routers.DefaultRouter()
 router.register(r'api-v1-employees', views.EmployeeViewSet)
+router.register(r'api-v1-games', views.GameViewSet)
 
 
 urlpatterns = [
