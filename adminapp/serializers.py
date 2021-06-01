@@ -21,16 +21,13 @@ class GameSerializerFull(serializers.HyperlinkedModelSerializer):
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    employee_games = GameSerializer(many=True, required=False)
+    employee_games = GameSerializerFull(many=True, required=False)
 
     def create(self, validated_data):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
-        games = validated_data.pop("employee_games")
         obj = Employee.objects.create(**validated_data)
-        for game in games:
-            obj.employee_games.add(game)
         return obj
 
     def update(self, instance, validated_data):
