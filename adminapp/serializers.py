@@ -2,7 +2,7 @@ from rest_framework import serializers
 from adminapp.models import Employee, Game
 
 
-class GameSerializer(serializers.HyperlinkedModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
     def to_representation(self, value):
         return value.game_name
 
@@ -12,7 +12,7 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class GameSerializerFull(serializers.HyperlinkedModelSerializer):
+class GameSerializerFull(serializers.ModelSerializer):
 
     class Meta:
 
@@ -20,7 +20,7 @@ class GameSerializerFull(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+class EmployeeSerializer(serializers.ModelSerializer):
     employee_games = GameSerializerFull(many=True, required=False)
 
     def create(self, validated_data):
