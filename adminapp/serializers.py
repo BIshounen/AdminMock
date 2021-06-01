@@ -28,6 +28,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
         Create and return a new `Employee` instance, given the validated data.
         """
         games = validated_data.pop('employee_games')
+        return games
+
         employee = Employee.objects.create(**validated_data)
         for game in games:
             game_obj = Game.objects.get(pk=game['id'])
