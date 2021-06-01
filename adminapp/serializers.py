@@ -30,7 +30,7 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
         games = validated_data.pop('employee_games')
         employee = Employee.objects.create(**validated_data)
         for game in games:
-            Game.objects.create(employee=employee, **game)
+            employee.employee_games.add(game)
         return employee
 
     def update(self, instance, validated_data):
