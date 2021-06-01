@@ -29,7 +29,8 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
         """
         games = validated_data.pop("employee_games")
         obj = Employee.objects.create(**validated_data)
-        obj.employee_games = games
+        for game in games:
+            obj.employee_games.add(game)
         return obj
 
     def update(self, instance, validated_data):
