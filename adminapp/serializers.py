@@ -30,7 +30,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
         games = validated_data.pop('employee_games')
         employee = Employee.objects.create(**validated_data)
         for game in games:
-            employee.employee_games.add(**game)
+            game_obj = Game.objects.get(pk=game['id'])
+            employee.employee_games.add(game_obj)
         return employee
 
     def update(self, instance, validated_data):
