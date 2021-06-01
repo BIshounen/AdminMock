@@ -21,7 +21,7 @@ class GameSerializerFull(serializers.HyperlinkedModelSerializer):
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    employee_games = GameSerializer(read_only=True, many=True)
+    employee_games = GameSerializer(many=True, required=False)
 
     def create(self, validated_data):
         """
@@ -31,7 +31,7 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
 
     def update(self, instance, validated_data):
         """
-        Update and return an existing `Snippet` instance, given the validated data.
+        Update and return an existing `Employee` instance, given the validated data.
         """
         instance.employee_name = validated_data.get('employee_name', instance.employee_name)
         instance.card_code = validated_data.get('card_code', instance.card_code)
