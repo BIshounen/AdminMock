@@ -28,7 +28,7 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
         Create and return a new `Snippet` instance, given the validated data.
         """
         games = validated_data.pop("employee_games")
-        return Employee.objects.create(**validated_data)
+        return str(games)
 
     def update(self, instance, validated_data):
         """
