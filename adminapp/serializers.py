@@ -21,7 +21,7 @@ class GameSerializerFull(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    employee_games = GameSerializerFull(read_only=True, many=True, required=False)
+    employee_games = GameSerializerFull(many=True, required=False)
 
     def create(self, validated_data):
         """
