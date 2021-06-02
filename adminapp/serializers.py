@@ -13,7 +13,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class GameSerializerFull(serializers.ModelSerializer):
-
+    id = serializers.IntegerField(read_only=False)
     class Meta:
 
         model = Game
