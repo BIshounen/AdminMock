@@ -21,7 +21,7 @@ class GameSerializerFull(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    employee_games = GameSerializerFull(many=True, required=False)
+    employee_games = GameSerializerFull(read_only=True, many=True, required=False)
 
     def create(self, validated_data):
         """
@@ -33,7 +33,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
         print(games)
         print(games.keys())
         for game in games:
-            game_obj = Game.objects.get(pk=game['id'])
+            game_obj = GameSerializerFull.get_value()
             employee.employee_games.add(game_obj)
         return employee
 
