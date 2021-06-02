@@ -31,9 +31,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         employee = Employee.objects.create(**validated_data)
         print(games)
-        print(games[0].keys())
         for game in games:
-            game_obj = GameSerializerFull.get_value()
+            game_obj = Game.objects.get(pk=game['id'])
             employee.employee_games.add(game_obj)
         return employee
 
