@@ -27,4 +27,5 @@ router.register(r'api-v1-games', views.GameViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('api-token-auth/', views.obtain_auth_token),
 ]

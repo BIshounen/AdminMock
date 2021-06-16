@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import EmployeeSerializer, GameSerializer
 from .models import Employee, Game
+from rest_framework.authtoken import views
 
 
 # Create your views here.
