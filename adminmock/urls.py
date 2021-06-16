@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-import adminapp.views as views
+import adminapp.views
+from rest_framework.authtoken import views
 
 
 router = routers.DefaultRouter()
-router.register(r'api-v1-employees', views.EmployeeViewSet)
-router.register(r'api-v1-games', views.GameViewSet)
+router.register(r'api-v1-employees', adminapp.views.EmployeeViewSet)
+router.register(r'api-v1-games', adminapp.views.GameViewSet)
 
 
 urlpatterns = [
