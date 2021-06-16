@@ -12,7 +12,6 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=False)
 
     def create(self, validated_data):
         """
