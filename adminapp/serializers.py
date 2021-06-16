@@ -12,6 +12,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    comment = serializers.CharField(source='first_name')
 
     def create(self, validated_data):
         """
@@ -38,7 +39,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = User
-        fields = ['id', 'username', 'is_active']
+        fields = ['id', 'username', 'is_active', 'comment']
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
