@@ -13,6 +13,17 @@ class GameSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=False)
+
+    def create(self, validated_data):
+        """
+        Create and return a new `Employee` instance, given the validated data.
+        """
+        validated_data['email'] = "admin@admin.com"
+
+        user = User.objects.create(**validated_data)
+
+        return user
+
     class Meta:
 
         model = User
