@@ -23,11 +23,11 @@ from rest_framework.authtoken import views
 router = routers.DefaultRouter()
 router.register(r'api-v1-employees', adminapp.views.EmployeeViewSet)
 router.register(r'api-v1-games', adminapp.views.GameViewSet)
+router.register(r'api-v1-admins', adminapp.views.AdminsViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
-    path(r'api-v1-login_test', adminapp.views.login_test),
 ]

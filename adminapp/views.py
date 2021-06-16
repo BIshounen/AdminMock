@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import EmployeeSerializer, GameSerializer
+from .serializers import EmployeeSerializer, GameSerializer, UserSerializer
 from .models import Employee, Game
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -28,10 +26,11 @@ class GameViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-@api_view(['GET'])
-def login_test(request):
+# Create your views here.
+class AdminsViewSet(viewsets.ModelViewSet):
     """
-    List all code snippets, or create a new snippet.
+    API endpoint that allows users to be viewed or edited.
     """
-    if request.method == 'GET':
-        return Response("{}")
+    queryset = User.objects.all().order_by('-game_name')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from adminapp.models import Employee, Game
+from django.contrib.auth.models import User
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -7,6 +8,14 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Game
+        fields = '__all__'
+
+
+class UserSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=False)
+    class Meta:
+
+        model = User
         fields = '__all__'
 
 
