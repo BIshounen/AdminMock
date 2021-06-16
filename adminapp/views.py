@@ -3,7 +3,8 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import EmployeeSerializer, GameSerializer
 from .models import Employee, Game
-from rest_framework.authtoken import views
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -27,10 +28,10 @@ class GameViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# Create your views here.
-class GameViewSet(viewsets.ModelViewSet):
+@api_view(['GET'])
+def snippet_list(request):
     """
-    API endpoint that allows users to be viewed or edited.
+    List all code snippets, or create a new snippet.
     """
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = Game.objects.none()
+    if request.method == 'GET':
+        return Response("{}")
