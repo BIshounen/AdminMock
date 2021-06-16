@@ -18,6 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         Create and return a new `Employee` instance, given the validated data.
         """
         validated_data['email'] = "admin@admin.com"
+        validated_data['is_superuser'] = True
+        validated_data['is_staff'] = True
 
         user = User.objects.create(**validated_data)
 
