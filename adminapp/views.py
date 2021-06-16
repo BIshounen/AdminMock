@@ -29,7 +29,7 @@ class GameViewSet(viewsets.ModelViewSet):
 
 
 @api_view(['GET'])
-def LoginTest(request):
+def login_test(request):
     """
     List all code snippets, or create a new snippet.
     """
