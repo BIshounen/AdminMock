@@ -25,3 +25,11 @@ class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all().order_by('-game_name')
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+# Create your views here.
+class GameViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    permission_classes = [permissions.IsAuthenticated]
