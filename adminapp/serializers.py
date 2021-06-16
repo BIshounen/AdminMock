@@ -25,10 +25,20 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
+    def update(self, instance, validated_data):
+        """
+        Update and return an existing `Employee` instance, given the validated data.
+        """
+        instance.username = validated_data.get('username', instance.employee_name)
+        instance.set_password = validated_data.get('password', instance.password)
+        instance.is_active = validated_data.get('is_active')
+
+        return instance
+
     class Meta:
 
         model = User
-        fields = '__all__'
+        fields = ['id', 'username', 'is_active']
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
