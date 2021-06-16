@@ -3,16 +3,6 @@ from adminapp.models import Employee, Game
 
 
 class GameSerializer(serializers.ModelSerializer):
-    def to_representation(self, value):
-        return value.game_name
-
-    class Meta:
-
-        model = Game
-        fields = '__all__'
-
-
-class GameSerializerFull(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=False)
     class Meta:
 
@@ -21,7 +11,7 @@ class GameSerializerFull(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    employee_games = GameSerializerFull(many=True, required=False)
+    employee_games = GameSerializer(many=True, required=False)
 
     def create(self, validated_data):
         """
