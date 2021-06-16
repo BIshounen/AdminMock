@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'multiselectfield',
-    'adminapp.apps.AdminappConfig'
+    'adminapp.apps.AdminappConfig',
+    'rest_framework.authtoken'
 ]
 
 REST_FRAMEWORK = {
