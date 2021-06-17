@@ -12,7 +12,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    comment = serializers.CharField(source='first_name')
+    comment = serializers.CharField(source='last_name')
     password = serializers.CharField(required=False, allow_blank=True, write_only=True)
 
     def create(self, validated_data):
@@ -34,6 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password = password
         instance.is_active = validated_data.get('is_active', instance.is_active)
         instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.first_name)
         instance.save()
 
         return instance
@@ -41,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = User
-        fields = ['id', 'username', 'is_active', 'comment', 'password']
+        fields = ['id', 'username', 'is_active', 'comment', 'password', 'last_name']
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
