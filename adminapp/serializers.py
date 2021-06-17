@@ -21,9 +21,9 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data['email'] = "admin@admin.com"
         validated_data['is_superuser'] = True
         validated_data['is_staff'] = True
-
+        password = validated_data['password']
         user = User.objects.create(**validated_data)
-        user.set_password(validated_data['password'])
+        user.set_password(password)
         user.save()
 
         return user
