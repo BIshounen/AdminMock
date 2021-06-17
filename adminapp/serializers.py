@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
         instance.username = validated_data.get('username', instance.username)
         instance.set_password = validated_data.get('password', instance.password)
         instance.is_active = validated_data.get('is_active', instance.is_active)
-        instance.comment = validated_data.get('comment', instance.comment)
+        instance.first_name = validated_data.get('comment', instance.first_name)
 
         return instance
 
