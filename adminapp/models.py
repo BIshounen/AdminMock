@@ -5,14 +5,14 @@ from multiselectfield import MultiSelectField
 
 
 class Game(models.Model):
-    game_name = models.CharField(max_length=200)
+    game_name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.game_name
 
 
 class Employee(models.Model):
-    employee_name = models.CharField(max_length=200)
+    employee_name = models.CharField(max_length=255)
     card_code = models.IntegerField(blank=True)
     is_active = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -21,3 +21,21 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.employee_name
+
+
+class RussianPokerBonusTable(models.Model):
+    lower_boundary = models.IntegerField(default=0)
+    jackpot_percentage = models.IntegerField(default=0)
+
+
+class GamePreset(models.Model):
+    preset_name = models.CharField(max_length=255)
+    preset_games = models.ForeignKey(Game)
+
+
+class RussianPokerSettings(models.Model):
+    ante_min = models.IntegerField(default=0)
+    bonus_min = models.IntegerField(default=0)
+    payout_max = models.IntegerField(default=0)
+    bonus_table = models.ForeignKey(RussianPokerBonusTable, blank=True)
+    preset = models.OneToOneField(GamePreset, on_delete=models.CASCADE, primary_key=True)
