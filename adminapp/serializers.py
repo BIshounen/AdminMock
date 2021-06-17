@@ -14,16 +14,16 @@ class GameSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     comment = serializers.CharField(source='first_name')
 
-    def create(self, validated_data):
+    def create(self, request, *args, **kwargs):
         """
         Create and return a new `Employee` instance, given the validated data.
         """
-        validated_data['email'] = "admin@admin.com"
-        validated_data['is_superuser'] = True
-        validated_data['is_staff'] = True
-        password = validated_data['password']
-        user = User.objects.create(**validated_data)
-        user.set_password(password)
+        data = request.data()
+        data['email'] = "admin@admin.com"
+        data['is_superuser'] = True
+        data['is_staff'] = True
+        user = User.objects.create(**data)
+        user.set_password(data['password'])
         user.save()
 
         return user
