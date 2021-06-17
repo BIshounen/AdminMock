@@ -31,7 +31,9 @@ class UserSerializer(serializers.ModelSerializer):
         Update and return an existing `Employee` instance, given the validated data.
         """
         instance.username = validated_data.get('username', instance.username)
-        instance.set_password = validated_data.get('password', instance.password)
+        password = validated_data.get('password', "")
+        if password is not "":
+            instance.set_password = password
         instance.is_active = validated_data.get('is_active', instance.is_active)
         instance.first_name = validated_data.get('first_name', instance.first_name)
         instance.save()
