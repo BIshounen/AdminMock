@@ -23,6 +23,8 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data['is_staff'] = True
 
         user = User.objects.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
 
         return user
 
