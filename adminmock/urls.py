@@ -19,11 +19,15 @@ from rest_framework import routers
 import adminapp.views
 from rest_framework.authtoken import views
 
+admins_list = adminapp.views.AdminsViewSet.as_view({
+    'post': 'create',
+    'patch': 'update'
+})
 
 router = routers.DefaultRouter()
 router.register(r'api-v1-employees', adminapp.views.EmployeeViewSet)
 router.register(r'api-v1-games', adminapp.views.GameViewSet)
-router.register(r'api-v1-admins', adminapp.views.AdminsViewSet)
+router.register(r'api-v1-admins', admins_list, adminapp.views.AdminsViewSet)
 
 
 urlpatterns = [
