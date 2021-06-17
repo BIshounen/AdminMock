@@ -14,24 +14,19 @@ class GameSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     comment = serializers.CharField(source='first_name')
 
-    def create(self, request, *args, **kwargs):
-        """
-        Create and return a new `Employee` instance, given the validated data.
-        """
-        data = request.data()
-        data['email'] = "admin@admin.com"
-        data['is_superuser'] = True
-        data['is_staff'] = True
-        user = User.objects.create(**data)
-        user.set_password(data['password'])
+    def create(self, validated_data):
+
+        validated_data['email'] = "admin@admin.com"
+        validated_data['is_superuser'] = True
+        validated_data['is_staff'] = True
+        user = User.objects.create(**validated_data)
+        user.set_password(validated_data['password'])
         user.save()
 
         return user
 
     def update(self, instance, validated_data):
-        """
-        Update and return an existing `Employee` instance, given the validated data.
-        """
+
         instance.username = validated_data.get('username', instance.username)
         password = validated_data.get('password', "")
         if password is not "":
@@ -45,16 +40,14 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = User
-        fields = ['id', 'username', 'is_active', 'comment']
+        fields = ['id', 'username', 'is_active', 'comment', 'password']
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     employee_games = GameSerializer(many=True, required=False)
 
     def create(self, validated_data):
-        """
-        Create and return a new `Employee` instance, given the validated data.
-        """
+
         games = validated_data.pop('employee_games')
 
         employee = Employee.objects.create(**validated_data)
@@ -65,9 +58,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
         return employee
 
     def update(self, instance, validated_data):
-        """
-        Update and return an existing `Employee` instance, given the validated data.
-        """
+
         instance.employee_name = validated_data.get('employee_name', instance.employee_name)
         instance.card_code = validated_data.get('card_code', instance.card_code)
         instance.is_active = validated_data.get('is_active', instance.is_active)
