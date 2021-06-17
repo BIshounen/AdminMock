@@ -30,7 +30,7 @@ class RussianPokerBonusTable(models.Model):
 
 class GamePreset(models.Model):
     preset_name = models.CharField(max_length=255)
-    preset_games = models.ForeignKey(Game)
+    preset_games = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 
 class RussianPokerSettings(models.Model):
