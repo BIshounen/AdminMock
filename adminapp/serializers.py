@@ -13,6 +13,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     comment = serializers.CharField(source='first_name')
+    password = serializers.CharField(required=False)
 
     def create(self, validated_data):
 
