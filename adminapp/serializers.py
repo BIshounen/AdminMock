@@ -83,7 +83,7 @@ class BonusTableSerializer(serializers.ModelSerializer):
 
 class RPokerSettingsSerializer(serializers.ModelSerializer):
 
-    russianpokerBonusTable = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    bonus_table = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = RussianPokerSettings
