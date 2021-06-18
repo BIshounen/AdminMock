@@ -23,11 +23,6 @@ class Employee(models.Model):
         return self.employee_name
 
 
-class RussianPokerBonusTable(models.Model):
-    lower_boundary = models.IntegerField(default=0)
-    jackpot_percentage = models.IntegerField(default=0)
-
-
 class GamePreset(models.Model):
     preset_name = models.CharField(max_length=255)
     preset_games = models.ForeignKey(Game, on_delete=models.CASCADE)
@@ -37,5 +32,10 @@ class RussianPokerSettings(models.Model):
     ante_min = models.IntegerField(default=0)
     bonus_min = models.IntegerField(default=0)
     payout_max = models.IntegerField(default=0)
-    bonus_table = models.ForeignKey(RussianPokerBonusTable, on_delete=models.CASCADE)
     preset = models.OneToOneField(GamePreset, on_delete=models.CASCADE, primary_key=True)
+
+
+class RussianPokerBonusTable(models.Model):
+    lower_boundary = models.IntegerField(default=0)
+    jackpot_percentage = models.IntegerField(default=0)
+    settings = models.ForeignKey(RussianPokerSettings, on_delete=models.CASCADE, primary_key=True)
