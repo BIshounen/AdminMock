@@ -75,6 +75,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RPokerSettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RussianPokerSettings
+        fields = '__all__'
+
+
 class PresetSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
 
@@ -82,8 +88,9 @@ class PresetSerializer(serializers.ModelSerializer):
         game = ""
         if hasattr(instance, 'russianpokersettings'):
             game = 'Russian Poker'
+            game_settings = RPokerSettingsSerializer()
         return game
 
     class Meta:
         model = GamePreset
-        fields = ['id', 'preset_name', 'partner', 'game']
+        fields = ['id', 'preset_name', 'partner', 'game', 'game_settings']
