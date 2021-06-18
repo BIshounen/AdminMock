@@ -75,6 +75,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class BonusTableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RussianPokerBonusTable
+        fields = '__all__'
+
+
 class RPokerSettingsSerializer(serializers.ModelSerializer):
 
     russianpokerbonustable = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
