@@ -27,12 +27,18 @@ class GamePreset(models.Model):
     preset_name = models.CharField(max_length=255)
     preset_games = models.ForeignKey(Game, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.preset_name
+
 
 class RussianPokerSettings(models.Model):
     ante_min = models.IntegerField(default=0)
     bonus_min = models.IntegerField(default=0)
     payout_max = models.IntegerField(default=0)
     preset = models.OneToOneField(GamePreset, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return "for {}".format(str(self.preset))
 
 
 class RussianPokerBonusTable(models.Model):
