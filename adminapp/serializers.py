@@ -80,7 +80,7 @@ class PresetSerializer(serializers.ModelSerializer):
 
     def get_game(self, instance):
         game = ""
-        if type(instance) == RussianPokerSettings:
+        if isinstance(instance, RussianPokerSettings):
             game = 'Russian Poker'
         return game
 
