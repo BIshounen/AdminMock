@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         instance.username = validated_data.get('username', instance.username)
         password = validated_data.get('password', "")
-        if password is not "":
+        if password != "":
             instance.set_password = password
         instance.is_active = validated_data.get('is_active', instance.is_active)
         instance.first_name = validated_data.get('first_name', instance.first_name)

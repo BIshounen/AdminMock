@@ -34,8 +34,3 @@ class RussianPokerSettings(models.Model):
     payout_max = models.IntegerField(default=0)
     preset = models.OneToOneField(GamePreset, on_delete=models.CASCADE, primary_key=True)
 
-
-class RussianPokerBonusTable(models.Model):
-    lower_boundary = models.IntegerField(default=0)
-    jackpot_percentage = models.IntegerField(default=0)
-    settings = models.ForeignKey(RussianPokerSettings, on_delete=models.CASCADE)
