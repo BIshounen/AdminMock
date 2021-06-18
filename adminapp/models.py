@@ -45,3 +45,6 @@ class RussianPokerBonusTable(models.Model):
     lower_boundary = models.IntegerField(default=0)
     jackpot_percentage = models.IntegerField(default=0)
     settings = models.ForeignKey(RussianPokerSettings, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{} {}".format(self.lower_boundary, str(self.settings))
