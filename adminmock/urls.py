@@ -27,6 +27,7 @@ router = routers.DefaultRouter()
 router.register(r'api-v1-employees', adminapp.views.EmployeeViewSet)
 router.register(r'api-v1-games', adminapp.views.GameViewSet)
 router.register(r'api-v1-admins', adminapp.views.AdminsViewSet)
+router.register(r'api-v1-admins', adminapp.views.PresetsViewSet)
 
 
 urlpatterns = [
