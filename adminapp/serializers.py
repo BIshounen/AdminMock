@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from adminapp.models import Employee, Game, GamePreset
+from adminapp.models import Employee, Game, GamePreset, RussianPokerSettings, RussianPokerBonusTable
 from django.contrib.auth.models import User
 
 
@@ -76,6 +76,14 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
 
 class PresetSerializer(serializers.ModelSerializer):
+    game = serializers.SerializerMethodField()
+
+
+    def get_game(self, instance):
+        game = ""
+        if type(instance) == RussianPokerSettings:
+            game = 'Russian Poker'
+        return game
 
     class Meta:
         model = GamePreset
