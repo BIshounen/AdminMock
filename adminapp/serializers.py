@@ -78,7 +78,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class PresetSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
 
-
     def get_game(self, instance):
         game = ""
         if type(instance) == RussianPokerSettings:
@@ -87,4 +86,4 @@ class PresetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GamePreset
-        fields = '__all__'
+        fields = ['id', 'preset_name', 'partner', 'game']
