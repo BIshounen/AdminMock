@@ -83,12 +83,13 @@ class RPokerSettingsSerializer(serializers.ModelSerializer):
 
 class PresetSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
+    game_settings = serializers.PrimaryKeyRelatedField(queryset=RussianPokerSettings.objects.all())
 
     def get_game(self, instance):
         game = ""
+
         if hasattr(instance, 'russianpokersettings'):
             game = 'Russian Poker'
-            game_settings = RPokerSettingsSerializer()
         return game
 
     class Meta:
