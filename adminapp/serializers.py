@@ -82,8 +82,8 @@ class RPokerSettingsSerializer(serializers.ModelSerializer):
 
 
 class PresetSerializer(serializers.ModelSerializer):
-    game = serializers.SerializerMethodField(read_only=True)
-    game_settings = serializers.PrimaryKeyRelatedField()
+    game = serializers.SerializerMethodField()
+    game_settings = serializers.PrimaryKeyRelatedField(read_only=True)
 
     def get_game(self, instance):
         game = ""
