@@ -83,7 +83,7 @@ class RPokerSettingsSerializer(serializers.ModelSerializer):
 
 class PresetSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
-    game_settings = serializers.PrimaryKeyRelatedField(read_only=True)
+    russianpokersettings = serializers.PrimaryKeyRelatedField(read_only=True)
 
     def get_game(self, instance):
         game = ""
@@ -94,4 +94,4 @@ class PresetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GamePreset
-        fields = ['id', 'preset_name', 'partner', 'game', 'game_settings']
+        fields = ['id', 'preset_name', 'partner', 'game', 'russianpokersettings']
