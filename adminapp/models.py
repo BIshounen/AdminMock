@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 from multiselectfield import MultiSelectField
 
 # Create your models here.
