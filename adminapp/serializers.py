@@ -95,7 +95,7 @@ class PresetSerializer(serializers.ModelSerializer):
     def get_settings(self, instance):
         result = None
         if hasattr(instance, 'russianpokersettings'):
-            result = RussianPokerSettings.objects.get(pk=instance)
+            result = RPokerSettingsSerializer(RussianPokerSettings.objects.get(pk=instance))
 
         return result
 
