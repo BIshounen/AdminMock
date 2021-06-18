@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from adminapp.models import Employee, Game
+from adminapp.models import Employee, Game, GamePreset
 from django.contrib.auth.models import User
 
 
@@ -72,4 +72,11 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Employee
+        fields = '__all__'
+
+
+class PresetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GamePreset
         fields = '__all__'
