@@ -23,9 +23,15 @@ class Employee(models.Model):
         return self.employee_name
 
 
+class Partner(models.Model):
+    partner_name = models.CharField(max_length=255)
+    one_wallet_cert = models.CharField(max_length=255)
+
+
 class GamePreset(models.Model):
     preset_name = models.CharField(max_length=255)
     preset_games = models.ForeignKey(Game, on_delete=models.CASCADE)
+    partner = models.ForeignKey(Partner, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.preset_name

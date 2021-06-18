@@ -23,6 +23,10 @@ admin_details = adminapp.views.AdminsViewSet.as_view({
     'patch': 'update'
 })
 
+preset_details = adminapp.views.PresetsViewSet.as_view({
+    'patch': 'update'
+})
+
 router = routers.DefaultRouter()
 router.register(r'api-v1-employees', adminapp.views.EmployeeViewSet)
 router.register(r'api-v1-games', adminapp.views.GameViewSet)
