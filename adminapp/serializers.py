@@ -97,7 +97,7 @@ class PresetSerializer(serializers.ModelSerializer):
         if hasattr(instance, 'russianpokersettings'):
             result = RPokerSettingsSerializer(RussianPokerSettings.objects.get(pk=instance))
 
-        return result
+        return result.data
 
     class Meta:
         model = GamePreset
