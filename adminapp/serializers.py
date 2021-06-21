@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from adminapp.models import Employee, Game, GamePreset, RussianPokerSettings, RussianPokerBonusTable
+from adminapp.models import Employee, Game, GamePreset, RussianPokerSettings, RussianPokerBonusTable,\
+    RouletteMinMax, RouletteSettings
 from django.contrib.auth.models import User
 
 
@@ -90,6 +91,21 @@ class RPokerSettingsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RouletteMinMaxSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RouletteMinMax
+        fields = '__all__'
+
+
+class RouletteSettingsSerializer(serializers.ModelSerializer):
+
+    straight_up = RouletteMinMaxSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = RouletteSettings
+        fields = '__all__'
+
+
 class PresetSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
     settings = serializers.SerializerMethodField()
@@ -105,6 +121,8 @@ class PresetSerializer(serializers.ModelSerializer):
         result = None
         if hasattr(instance, 'russianpokersettings'):
             result = RPokerSettingsSerializer(RussianPokerSettings.objects.get(pk=instance))
+        elif hasattr(instance, 'roulettesettings'):
+            result = RouletteSettingsSerializer(RouletteSettings.objects.get(pk=instance))
 
         return result.data
 

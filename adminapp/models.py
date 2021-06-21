@@ -54,3 +54,27 @@ class RussianPokerBonusTable(models.Model):
 
     def __str__(self):
         return "{}-{} {}".format(self.lower_boundary, self.jackpot_percentage, str(self.settings))
+
+
+class RouletteMinMax(models.Model):
+    min = models.IntegerField(default=0)
+    max = models.IntegerField(default=0)
+
+
+class RouletteSettings(models.Model):
+    preset = models.OneToOneField(GamePreset, on_delete=models.CASCADE, primary_key=True)
+    straight_up = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="straight_up")
+    split = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="split")
+    street = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="street")
+    corner = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="corner")
+    six_line = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="six_line")
+    column = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="column")
+    dozen = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="dozen")
+    even_chances = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="even_chances")
+    voisins_de_zero = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="voisins_de_zero")
+    zero_spiel = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="zero_spiel")
+    orphelins = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="orphelins")
+    series_5_8 = models.OneToOneField(RouletteMinMax, on_delete=models.CASCADE, related_name="series_5_8")
+
+    def __str__(self):
+        return "for {}".format(str(self.preset))
