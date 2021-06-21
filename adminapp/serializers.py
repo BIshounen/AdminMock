@@ -98,7 +98,7 @@ class PresetSerializer(serializers.ModelSerializer):
         game = ""
 
         if hasattr(instance, 'russianpokersettings'):
-            game = 'Russian Poker'
+            game = {'id': 1, 'name': 'Russian Poker'}
         return game
 
     def get_settings(self, instance):
