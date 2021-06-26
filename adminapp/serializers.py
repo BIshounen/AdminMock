@@ -107,8 +107,8 @@ class RouletteSettingsSerializer(serializers.ModelSerializer):
 
 
 class PresetSerializer(serializers.ModelSerializer):
-    game = serializers.SerializerMethodField()
-    settings = serializers.SerializerMethodField(read_only=False)
+    game = serializers.SerializerMethodField(required=True)
+    settings = serializers.SerializerMethodField(read_only=False, required=True)
 
     def get_game(self, instance):
         game = ""
