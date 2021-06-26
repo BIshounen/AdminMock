@@ -126,6 +126,21 @@ class PresetSerializer(serializers.ModelSerializer):
 
         return result.data
 
+    def create(self, validated_data):
+
+        settings = validated_data.pop('settings')
+
+        preset_object = GamePreset.objects.create(**validated_data)
+        settings['preset'] = preset_object
+        if validated_data['game']['id'] == 1:
+            bonus_table = settings.pop('bonus_table')
+            settings_object = RussianPokerSettings.objects.create(**settings)
+            for bonus in bonus_table:
+                bonus['settings'] = settings_object
+                bonus_table_object = RussianPokerBonusTable.objects.create(**bonus)
+
+        return preset_object
+
     class Meta:
         model = GamePreset
         fields = ['id', 'preset_name', 'partner', 'game', 'settings']
