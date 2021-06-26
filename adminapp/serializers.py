@@ -84,7 +84,7 @@ class BonusTableSerializer(serializers.ModelSerializer):
 
 class RPokerSettingsSerializer(serializers.ModelSerializer):
 
-    bonus_table = BonusTableSerializer(many=True)
+    bonus_table = BonusTableSerializer(many=True, read_only=True)
 
     class Meta:
         model = RussianPokerSettings
@@ -99,7 +99,7 @@ class RouletteMinMaxSerializer(serializers.ModelSerializer):
 
 class RouletteSettingsSerializer(serializers.ModelSerializer):
 
-    straight_up = RouletteMinMaxSerializer(many=False)
+    straight_up = RouletteMinMaxSerializer(many=False, read_only=True)
 
     class Meta:
         model = RouletteSettings
@@ -107,8 +107,8 @@ class RouletteSettingsSerializer(serializers.ModelSerializer):
 
 
 class PresetSerializer(serializers.ModelSerializer):
-    game = serializers.SerializerMethodField(required=True)
-    settings = serializers.SerializerMethodField(required=True)
+    game = serializers.SerializerMethodField(required=True, read_only=False)
+    settings = serializers.SerializerMethodField(required=True, read_only=False)
 
     def get_game(self, instance):
         game = ""
