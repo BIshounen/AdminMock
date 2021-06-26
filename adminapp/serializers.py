@@ -127,7 +127,7 @@ class PresetSerializer(serializers.ModelSerializer):
         return result.data
 
     def create(self, validated_data):
-
+        print(validated_data)
         settings = validated_data.pop('settings')
 
         preset_object = GamePreset.objects.create(**validated_data)
