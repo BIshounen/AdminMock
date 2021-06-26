@@ -99,7 +99,7 @@ class RouletteMinMaxSerializer(serializers.ModelSerializer):
 
 class RouletteSettingsSerializer(serializers.ModelSerializer):
 
-    straight_up = RouletteMinMaxSerializer(many=False, read_only=True)
+    straight_up = RouletteMinMaxSerializer(many=False)
 
     class Meta:
         model = RouletteSettings
