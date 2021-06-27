@@ -106,8 +106,25 @@ class RouletteSettingsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PresetGameField(serializers.Field):
+
+    def get_attribute(self, instance):
+
+        return instance
+
+    def to_representation(self, value):
+        game = ""
+        if hasattr(value, 'russianpokersettings'):
+            game = {'id': 1, 'name': 'Russian Poker'}
+
+        return game
+
+    def to_internal_value(self, data):
+        return data
+
+
 class PresetSerializer(serializers.ModelSerializer):
-    game = serializers.SerializerMethodField()
+    game = serializers.PresetGameField()
     settings = serializers.SerializerMethodField()
 
     def get_game(self, instance):
