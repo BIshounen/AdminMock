@@ -136,7 +136,7 @@ class PresetSettingsField(serializers.Field):
         elif hasattr(value, 'roulettesettings'):
             result = RouletteSettingsSerializer(RouletteSettings.objects.get(pk=value))
 
-        return result
+        return result.data
 
     def to_internal_value(self, data):
         return data
