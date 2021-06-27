@@ -144,7 +144,7 @@ class PresetSettingsField(serializers.Field):
 
 class PresetSerializer(serializers.ModelSerializer):
     game = PresetGameField()
-    settings = PresetSettingsField
+    settings = PresetSettingsField()
 
     def get_settings(self, instance):
         result = None
