@@ -124,7 +124,7 @@ class PresetGameField(serializers.Field):
 
 
 class PresetSerializer(serializers.ModelSerializer):
-    game = serializers.PresetGameField()
+    game = PresetGameField()
     settings = serializers.SerializerMethodField()
 
     def get_game(self, instance):
