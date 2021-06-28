@@ -158,10 +158,10 @@ class PresetSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         print(validated_data)
         settings = validated_data.pop('settings')
-
+        game = validated_data.pop('game')
         preset_object = GamePreset.objects.create(**validated_data)
         settings['preset'] = preset_object
-        if validated_data['game']['id'] == 1:
+        if game['id'] == 1:
             bonus_table = settings.pop('bonus_table')
             settings_object = RussianPokerSettings.objects.create(**settings)
             for bonus in bonus_table:
