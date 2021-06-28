@@ -166,6 +166,7 @@ class PresetSerializer(serializers.ModelSerializer):
             settings_object = RussianPokerSettings.objects.create(**settings)
             for bonus in bonus_table:
                 bonus['settings'] = settings_object
+                bonus.pop('id')
                 bonus_table_object = RussianPokerBonusTable.objects.create(**bonus)
 
         return preset_object
