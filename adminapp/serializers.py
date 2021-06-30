@@ -168,6 +168,8 @@ class PresetSerializer(serializers.ModelSerializer):
                 bonus['settings'] = settings_object
                 bonus.pop('id')
                 bonus_table_object = RussianPokerBonusTable.objects.create(**bonus)
+        elif game['id'] == 2:
+            settings_object = RouletteSettings.object.create(**settings)
 
         return preset_object
 
