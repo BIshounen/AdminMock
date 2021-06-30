@@ -100,6 +100,17 @@ class RouletteMinMaxSerializer(serializers.ModelSerializer):
 class RouletteSettingsSerializer(serializers.ModelSerializer):
 
     straight_up = RouletteMinMaxSerializer(many=False, read_only=True)
+    split = RouletteMinMaxSerializer(many=False, read_only=True)
+    street = RouletteMinMaxSerializer(many=False, read_only=True)
+    corner = RouletteMinMaxSerializer(many=False, read_only=True)
+    six_line = RouletteMinMaxSerializer(many=False, read_only=True)
+    column = RouletteMinMaxSerializer(many=False, read_only=True)
+    dozen = RouletteMinMaxSerializer(many=False, read_only=True)
+    even_chances = RouletteMinMaxSerializer(many=False, read_only=True)
+    voisins_de_zero = RouletteMinMaxSerializer(many=False, read_only=True)
+    zero_spiel = RouletteMinMaxSerializer(many=False, read_only=True)
+    orphelins = RouletteMinMaxSerializer(many=False, read_only=True)
+    series_5_8 = RouletteMinMaxSerializer(many=False, read_only=True)
 
     class Meta:
         model = RouletteSettings
