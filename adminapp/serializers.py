@@ -116,6 +116,8 @@ class PresetGameField(serializers.Field):
         game = ""
         if hasattr(value, 'russianpokersettings'):
             game = {'id': 1, 'name': 'Russian Poker'}
+        elif hasattr(value, 'roulettesettings'):
+            game = {'id': 2, 'name': 'Roulette'}
 
         return game
 
