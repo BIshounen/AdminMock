@@ -31,7 +31,7 @@ class Partner(models.Model):
 
 class GamePreset(models.Model):
     preset_name = models.CharField(max_length=255)
-    partner = models.ForeignKey(Partner, on_delete=models.CASCADE, null=True)
+    partner = models.ForeignKey(Partner, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.preset_name
