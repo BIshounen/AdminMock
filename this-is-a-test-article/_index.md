@@ -31,5 +31,3 @@ Nx Meta is a lightweight and powerful platform that is also flexible and extensi
 [/tabs]
 
 .
-
-
