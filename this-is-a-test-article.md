@@ -12,6 +12,6 @@ title: Overview
 
 #### [Build Custom Solutions](https://meta.nxvms.com/docs/developers/knowledgebase/205)
 
-Nx Meta is a lightweight and powerful platform that is also flexible and extensible. It is designed to allow you to customize and use it for your specific projects. 
+Nx Meta is a lightweight and powerful platform that is also flexible and extensible. It is designed to allow you to customize and use it for your specific projects.
 
 
